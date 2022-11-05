@@ -9,6 +9,7 @@ jobs:
   test:
     name: "Run tests in ${{ matrix.suite }}"
     strategy:
+      fail-fast: false
       matrix:
         suite: [version-matrix, archival, misc]
         os: [ubuntu-latest, macos-latest]
