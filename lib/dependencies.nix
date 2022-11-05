@@ -89,6 +89,8 @@
         ${lib.optionalString optimize ''
           ${rdfind}/bin/rdfind -makesymlinks true -outputname /dev/null $SBT_DEPS/project/{.sbtboot,.boot,.ivy,.coursier}
           ${symlinks}/bin/symlinks -rc $SBT_DEPS/project
+
+          find $SBT_DEPS/project -type l \! -perm 777 -exec chmod -h 777 '{}' '+'
         ''}
         ${archivalStrategy.packerFragment}
 
