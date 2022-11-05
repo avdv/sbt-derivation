@@ -1,10 +1,9 @@
 generate_project() {
 	local options target_dir sbt_version scala_version
 	local -n target_dir_var
-	options=$(getopt -o '' --long sbt:,scala:,project-dir-var: -- "$@")
+	#options=$(getopt -o '' --long sbt:,scala:,project-dir-var: -- "$@")
 
-	eval set -- "$options"
-	while true; do
+	while [ $# -gt 0 ]; do
 		case "$1" in
 			--sbt)
 				shift
@@ -55,10 +54,10 @@ generate_project() {
 
 write_nix_config() {
 	local options project_dir order=0
-	options=$(getopt -o '' --long project-dir:,order: -- "$@")
+	#options=$(getopt -o '' --long project-dir:,order: -- "$@")
 
-	eval set -- "$options"
-	while true; do
+	#eval set -- "$options"
+	while [ $# -gt 0 ]; do
 		case "$1" in
 			--project-dir)
 				shift
@@ -81,10 +80,10 @@ write_nix_config() {
 
 build_project() {
 	local options project_dir compute_hash=0
-	options=$(getopt -o '' --long project-dir:,compute-deps-hash -- "$@")
+	#options=$(getopt -o '' --long project-dir:,compute-deps-hash -- "$@")
 
-	eval set -- "$options"
-	while true; do
+	#eval set -- "$options"
+	while [ $# -gt 0 ]; do
 		case "$1" in
 			--project-dir)
 				shift
@@ -113,10 +112,10 @@ build_project() {
 
 prepare_fresh_deps_hash() {
 	local options project_dir
-	options=$(getopt -o '' --long project-dir: -- "$@")
+	#options=$(getopt -o '' --long project-dir: -- "$@")
 
-	eval set -- "$options"
-	while true; do
+	#eval set -- "$options"
+	while [ $# -gt 0 ]; do
 		case "$1" in
 			--project-dir)
 				shift
