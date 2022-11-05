@@ -87,8 +87,11 @@
         runHook preInstall
 
         ${lib.optionalString optimize ''
+          oldumask=$(umask)
+          umask 000
           ${rdfind}/bin/rdfind -makesymlinks true -outputname /dev/null $SBT_DEPS/project/{.sbtboot,.boot,.ivy,.coursier}
           ${symlinks}/bin/symlinks -rc $SBT_DEPS/project
+          umask "$oldumask"
         ''}
         ${archivalStrategy.packerFragment}
 
