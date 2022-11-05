@@ -33,6 +33,7 @@
         repo="$1"
         shift
 
+        bash --version
         "$repo/tests/populate-version-matrix.sh" "$repo/tests/version-matrix.bats"
         exec "$repo/tests/bats/bin/bats" "$@"
       '';
