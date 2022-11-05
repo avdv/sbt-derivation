@@ -8,10 +8,11 @@ on:
 jobs:
   test:
     name: "Run tests in ${{ matrix.suite }}"
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         suite: [version-matrix, archival, misc]
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: cachix/install-nix-action@v17
