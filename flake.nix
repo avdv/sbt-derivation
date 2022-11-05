@@ -15,7 +15,7 @@
     }
     // (flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages."${system}";
-      testDependencies = with pkgs; [gnused gron nix-prefetch];
+      testDependencies = with pkgs; [bash gnused gron nix-prefetch];
     in {
       mkSbtDerivation = import ./lib/bootstrap.nix pkgs;
 
