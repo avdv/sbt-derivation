@@ -1,9 +1,8 @@
 generate_project() {
-	local options target_dir sbt_version scala_version -
+	local options target_dir sbt_version scala_version
 	local -n target_dir_var
 	options=$(getopt -o '' --long sbt:,scala:,project-dir-var: -- "$@")
 
-        set -ex
 	eval set -- "$options"
 	while true; do
 		case "$1" in
@@ -17,6 +16,7 @@ generate_project() {
 				;;
 			--project-dir-var)
 				shift
+        echo "setting project dir to: $1" >&2
 				target_dir_var="$1"
 				;;
 			--)
